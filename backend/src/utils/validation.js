@@ -64,6 +64,27 @@ const menuItemsSchemas = {
     }).min(1)
 };
 
+const menuItemSchemas = {
+    create: Joi.object({
+      restaurantId: Joi.string().required(),
+      name: Joi.string().min(2).max(100).required(),
+      description: Joi.string().max(300),
+      price: Joi.number().positive().precision(2).required(),
+      category: Joi.string().max(50).required(),
+      imageUrl: Joi.string().uri().optional(),
+      isAvailable: Joi.boolean().default(true)
+    }),
+
+    update: Joi.object({
+      name: Joi.string().min(2).max(100),
+      description: Joi.string().max(300),
+      price: Joi.number().positive().precision(2),
+      category: Joi.string().max(50),
+      imageUrl: Joi.string().uri(),
+      isAvailable: Joi.boolean()
+    }).min(1)
+  };
+
 const orderSchemas = {
     create: Joi.object({
         restaurantId: Joi.string().required(),
@@ -157,7 +178,7 @@ const validate = (schema, property = 'body') => {
                 });
               }
 
-              request[property] = value;
+              req[property] = value;
         } catch (error) {
             return reply.status(400).send({
                 success: false,

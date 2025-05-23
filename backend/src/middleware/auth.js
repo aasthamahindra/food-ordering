@@ -15,7 +15,7 @@ const authenticate = async (req, reply) => {
 
         const db = req.server.mongo.db;
         const user = await db.collection(COLLECTIONS.USERS).findOne(
-            { _id: req.server.mongo.ObjectId(decoded.userId) },
+            { _id: new req.server.mongo.ObjectId(decoded.userId) },
             { projection: { password: 0 } }
         );
 

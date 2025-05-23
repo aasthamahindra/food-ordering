@@ -5,23 +5,25 @@ const fastify = require('fastify')({
 });
 const { join } = require('path');
 
-async function registerPlugins() {
+async function loadConfig() {
     await fastify.register(require('@fastify/env'), {
-      schema: {
-        type: 'object',
-        required: ['PORT', 'MONGODB_URI', 'JWT_SECRET'],
-        properties: {
-            PORT: { type: 'string', default: '3001' },
-            HOST: { type: 'string', default: 'localhost'},
-            MONGODB_URI: { type: 'string' },
-            JWT_SECRET: { type: 'string' },
-            JWT_EXPIRES_IN: { type: 'string', default: '24h' },
-            FRONTEND_URL: { type: 'string', default: 'http://localhost:3000' },
-            NODE_ENV: { type: 'string', default: 'development' }
+        schema: {
+            type: 'object',
+            required: ['PORT', 'MONGODB_URI', 'JWT_SECRET'],
+            properties: {
+                PORT: { type: 'string', default: '3001' },
+                HOST: { type: 'string', default: 'localhost'},
+                MONGODB_URI: { type: 'string' },
+                JWT_SECRET: { type: 'string' },
+                JWT_EXPIRES_IN: { type: 'string', default: '24h' },
+                FRONTEND_URL: { type: 'string', default: 'http://localhost:3000' },
+                NODE_ENV: { type: 'string', default: 'development' }
+            }
         }
-      }
     });
+}
 
+async function registerPlugins() {
     await fastify.register(require('@fastify/helmet'), {
         contentSecurityPolicy: false,
     });
@@ -83,6 +85,7 @@ fastify.setErrorHandler(async (error, req, reply) => {
 
 async function start() {
     try {
+        await loadConfig();
         await registerPlugins();
         await registerRoutes();
 
@@ -93,10 +96,12 @@ async function start() {
 
         fastify.log.info(`Server listening on ${address}`);
 
-        // const db = fastify.mongo.db;
+        const db = fastify.mongo.client.db();
+        // console.log(fastify.mongo.client.db());
 
-        // await db.admin().ping();
-        // fastify.log('MongoDB connected successfully!');
+
+        await db.admin().ping();
+        fastify.log.info('MongoDB connected successfully!');
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);
