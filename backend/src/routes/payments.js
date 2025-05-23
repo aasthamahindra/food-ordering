@@ -1,6 +1,6 @@
 const { paymentMethodSchemas, querySchemas, validate } = require('../utils/validation');
 const { authenticate } = require('../middleware/auth');
-const { checkPermission } = require('../middleware/rabc');
+const { checkPermission } = require('../middleware/rbac');
 const payment = require('../controllers/payment.controllers');
 const { PERMISSIONS } = require('../utils/constants');
 

@@ -9,7 +9,7 @@ const {
   PAYMENT_METHODS
 } = require('../utils/constants');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/food_ordering_app';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Sample restaurants data
 const sampleRestaurants = [
