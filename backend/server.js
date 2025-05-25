@@ -29,8 +29,9 @@ async function registerPlugins() {
     });
 
     await fastify.register(require('@fastify/cors'), {
-        origin: [fastify.config.FRONTEND_URL, 'http://localhost:3000'],
+        origin: [fastify.config.FRONTEND_URL],
         credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     });
 
     await fastify.register(require('@fastify/rate-limit'), {
