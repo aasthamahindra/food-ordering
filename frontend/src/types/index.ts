@@ -78,9 +78,17 @@ export interface BasePaymentMethodDetails {
 }
 
 export interface PaymentMethod {
-  id: string;
+  _id: string;
+  userId: string;
   type: PaymentMethodType;
-  details: BasePaymentMethodDetails;
+  details: {
+    cardNumber?: string;
+    cardHolderName?: string;
+    expiryDate?: string;
+    cvv?: string;
+    paypalEmail?: string;
+    email?: string;
+  };
   cardHolderName?: string;
   cardNumber?: string;
   expiryDate?: string;

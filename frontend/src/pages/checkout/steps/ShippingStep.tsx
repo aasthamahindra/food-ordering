@@ -7,10 +7,12 @@ import {
   Typography,
 } from '@mui/material';
 
-interface ShippingStepProps {
+export interface ShippingStepProps {
   shippingInfo: {
-    name: string;
+    firstName: string;
+    lastName: string;
     address: string;
+    address2?: string;
     city: string;
     state: string;
     zipCode: string;
@@ -27,19 +29,40 @@ export default function ShippingStep({ shippingInfo, handleShippingInfoChange, h
   return (
     <Box>
       {error && <Typography color="error" sx={{ mb: 2 }}>{error}</Typography>}
-      <TextField
-        fullWidth
-        label="Name"
-        name="name"
-        value={shippingInfo.name}
-        onChange={handleShippingInfoChange}
-        margin="normal"
-      />
+      <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+        <TextField
+          fullWidth
+          label="First Name"
+          name="firstName"
+          value={shippingInfo.firstName}
+          onChange={handleShippingInfoChange}
+          required
+          margin="normal"
+        />
+        <TextField
+          fullWidth
+          label="Last Name"
+          name="lastName"
+          value={shippingInfo.lastName}
+          onChange={handleShippingInfoChange}
+          required
+          margin="normal"
+        />
+      </Box>
       <TextField
         fullWidth
         label="Address"
         name="address"
         value={shippingInfo.address}
+        onChange={handleShippingInfoChange}
+        required
+        margin="normal"
+      />
+      <TextField
+        fullWidth
+        label="Apartment, suite, etc. (optional)"
+        name="address2"
+        value={shippingInfo.address2 || ''}
         onChange={handleShippingInfoChange}
         margin="normal"
       />
