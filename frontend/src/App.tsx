@@ -21,6 +21,7 @@ import RestaurantMenuPage from './pages/restaurants/RestaurantMenuPage';
 import CartPage from './pages/cart/CartPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';
 import OrderHistoryPage from './pages/orders/OrderHistoryPage';
+import OrderConfirmationPage from './pages/order-confirmation/OrderConfirmationPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import PaymentMethodsPage from './pages/payments/PaymentMethodsPage';
 import PaymentHistoryPage from './pages/payments/PaymentHistoryPage';
@@ -93,7 +94,8 @@ const App: React.FC = () => {
                   <Route path="cart" element={<CartPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
-                  <Route path="/orders/confirmation/:orderId" element={<div>Order Confirmation</div>} />
+                  <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+                  <Route path="/orders/confirmation/:orderId" element={<OrderConfirmationPage />} />
                   <Route path="/orders/:orderId" element={<div>Order Details</div>} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/payments">

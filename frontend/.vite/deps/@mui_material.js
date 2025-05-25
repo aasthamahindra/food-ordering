@@ -1,4 +1,24 @@
 import {
+  CssVarsProvider,
+  Experimental_CssVarsProvider,
+  InitColorSchemeScript_default,
+  ThemeProvider,
+  adaptV4Theme,
+  createMuiStrictModeTheme,
+  createStyles,
+  deprecatedExtendTheme,
+  experimental_sx,
+  getInitColorSchemeScript,
+  getUnit,
+  makeStyles,
+  responsiveFontSizes,
+  toUnitless,
+  useColorScheme,
+  useThemeProps,
+  withStyles,
+  withTheme
+} from "./chunk-PXW5JZJ6.js";
+import {
   SvgIcon_default,
   capitalize_default,
   createChainedFunction,
@@ -32,25 +52,8 @@ import {
   useId_default
 } from "./chunk-RQ33H3UF.js";
 import {
-  CssVarsProvider,
-  Experimental_CssVarsProvider,
-  InitColorSchemeScript_default,
-  ThemeProvider,
-  adaptV4Theme,
-  createMuiStrictModeTheme,
-  createStyles,
-  deprecatedExtendTheme,
-  experimental_sx,
-  getInitColorSchemeScript,
-  getUnit,
-  makeStyles,
-  responsiveFontSizes,
-  toUnitless,
-  useColorScheme,
-  useThemeProps,
-  withStyles,
-  withTheme
-} from "./chunk-PXW5JZJ6.js";
+  require_react_dom
+} from "./chunk-ECWOLUX3.js";
 import {
   CssBaseline_default,
   body,
@@ -126,9 +129,6 @@ import {
   useRtl,
   useTheme
 } from "./chunk-NXCIZ5MC.js";
-import {
-  require_react_dom
-} from "./chunk-ECWOLUX3.js";
 import {
   require_jsx_runtime
 } from "./chunk-NX324PME.js";

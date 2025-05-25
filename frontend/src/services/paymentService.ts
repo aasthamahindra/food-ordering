@@ -79,9 +79,11 @@ export const paymentService = {
         payload = {
           ...payload,
           ...cardDetails,
-          cardHolderName: data.cardHolderName,
-          cardNumber: data.cardNumber,
-          expiryDate: data.expiryDate,
+          details: {
+            cardHolderName: data.cardHolderName,
+            cardNumber: data.cardNumber,
+            expiryDate: data.expiryDate,
+          },
           cvv: data.cvv
         };
       } else {
@@ -89,7 +91,9 @@ export const paymentService = {
         const { paypalEmail } = data as AddPayPalMethodPayload;
         payload = {
           ...payload,
-          paypalEmail
+          details: {
+            paypalEmail
+          }
         };
       }
       
